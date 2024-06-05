@@ -15,38 +15,38 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import ucr.ac.cr.api.models.UsuarioModel;
-import ucr.ac.cr.api.services.UsuarioService;
+import ucr.ac.cr.api.models.GrupoModel;
+import ucr.ac.cr.api.services.GrupoService;
 
 /**
  *
  * @author Marco
  */
 @RestController
-@RequestMapping("/usuario")
-public class UsuarioController {
+@RequestMapping("/grupo")
+public class GrupoController {
 
     @Autowired
-    UsuarioService recordatorioService;
+    GrupoService grupoService;
 
-    @GetMapping("/allUsuario")
-    public ArrayList<UsuarioModel> obtenerUsuario() {
-        return recordatorioService.obtenerUsuario();
+    @GetMapping("/allGrupo")
+    public ArrayList<GrupoModel> obtenerGrupo() {
+        return grupoService.obtenerGrupo();
     }
 
     @PostMapping()
-    public UsuarioModel guardarUsuario(@RequestBody UsuarioModel usuario) {
-        return this.recordatorioService.guardarUsuario(usuario);
+    public GrupoModel guardarGrupo(@RequestBody GrupoModel grupo) {
+        return this.grupoService.guardarGrupo(grupo);
     }
 
     @PatchMapping()
-    public UsuarioModel modificarUsuario(@RequestBody UsuarioModel usuario) {
-        return this.recordatorioService.guardarUsuario(usuario);
+    public GrupoModel modificarGrupo(@RequestBody GrupoModel grupo) {
+        return this.grupoService.guardarGrupo(grupo);
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> eliminarUsuario(@PathVariable Long id) {
-        recordatorioService.eliminarUsuario(id);
+    public ResponseEntity<Void> eliminarGrupo(@PathVariable Long id) {
+        grupoService.eliminarGrupo(id);
         return ResponseEntity.noContent().build();
     }
 }

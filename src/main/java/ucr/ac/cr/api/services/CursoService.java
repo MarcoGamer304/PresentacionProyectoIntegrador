@@ -5,39 +5,37 @@
 package ucr.ac.cr.api.services;
 
 import java.util.ArrayList;
-import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import ucr.ac.cr.api.models.LoginModel;
-import ucr.ac.cr.api.repositories.LoginRepository;
+import ucr.ac.cr.api.models.CursoModel;
+import ucr.ac.cr.api.repositories.CursoRepository;
 
 /**
  *
  * @author Marco
  */
 @Service
-public class LoginService {
+public class CursoService {
 
     @Autowired
-    LoginRepository loginRepository;
+    CursoRepository cursoRepository;
 
-    public ArrayList<LoginModel> obtenerUsuarios() {
-        return (ArrayList<LoginModel>) loginRepository.findAll();
+    public ArrayList<CursoModel> obtenerCurso() {
+        return (ArrayList<CursoModel>) cursoRepository.findAll();
     }
 
-    public LoginModel guardarUsuario(LoginModel usuario) {
-        return loginRepository.save(usuario);
+    public CursoModel guardarCurso(CursoModel curso) {
+        return cursoRepository.save(curso);
     }
 
     @Transactional
-    public void eliminarUsuario(Long id) {
-        if (loginRepository.existsById(id)) {
-            loginRepository.deleteById(id);
+    public void eliminarCurso(Long id) {
+        if (cursoRepository.existsById(id)) {
+            cursoRepository.deleteById(id);
         } else {
 
             System.out.println("fallo");
         }
     }
-
 }

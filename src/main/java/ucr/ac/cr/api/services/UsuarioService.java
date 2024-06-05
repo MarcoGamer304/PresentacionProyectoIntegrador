@@ -7,6 +7,7 @@ package ucr.ac.cr.api.services;
 import java.util.ArrayList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import ucr.ac.cr.api.models.UsuarioModel;
 import ucr.ac.cr.api.repositories.UsuarioRepository;
 
@@ -20,11 +21,21 @@ public class UsuarioService {
     @Autowired
     UsuarioRepository usuarioRepository;
 
-    public ArrayList<UsuarioModel> obtenerUsuarios() {
+    public ArrayList<UsuarioModel> obtenerUsuario() {
         return (ArrayList<UsuarioModel>) usuarioRepository.findAll();
     }
 
-    public UsuarioModel guardarUsuario(UsuarioModel usuario) {
-        return usuarioRepository.save(usuario);
+    public UsuarioModel guardarUsuario(UsuarioModel recordatorio) {
+        return usuarioRepository.save(recordatorio);
+    }
+
+    @Transactional
+    public void eliminarUsuario(Long id) {
+        if (usuarioRepository.existsById(id)) {
+            usuarioRepository.deleteById(id);
+        } else {
+
+            System.out.println("fallo");
+        }
     }
 }

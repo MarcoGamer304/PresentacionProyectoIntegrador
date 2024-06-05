@@ -15,38 +15,38 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import ucr.ac.cr.api.models.UsuarioModel;
-import ucr.ac.cr.api.services.UsuarioService;
+import ucr.ac.cr.api.models.PlanEstudioModel;
+import ucr.ac.cr.api.services.PlanEstudioService;
 
 /**
  *
  * @author Marco
  */
 @RestController
-@RequestMapping("/usuario")
-public class UsuarioController {
+@RequestMapping("/planEstudio")
+public class PlanEstudioController {
 
     @Autowired
-    UsuarioService recordatorioService;
+    PlanEstudioService planEstudioService;
 
-    @GetMapping("/allUsuario")
-    public ArrayList<UsuarioModel> obtenerUsuario() {
-        return recordatorioService.obtenerUsuario();
+    @GetMapping("/allPlanEstudio")
+    public ArrayList<PlanEstudioModel> obtenerPlanEstudio() {
+        return planEstudioService.obtenerPlanEstudio();
     }
 
     @PostMapping()
-    public UsuarioModel guardarUsuario(@RequestBody UsuarioModel usuario) {
-        return this.recordatorioService.guardarUsuario(usuario);
+    public PlanEstudioModel guardarPlanEstudio(@RequestBody PlanEstudioModel planEstudio) {
+        return this.planEstudioService.guardarPlanEstudio(planEstudio);
     }
 
     @PatchMapping()
-    public UsuarioModel modificarUsuario(@RequestBody UsuarioModel usuario) {
-        return this.recordatorioService.guardarUsuario(usuario);
+    public PlanEstudioModel modificarPlanEstudio(@RequestBody PlanEstudioModel planEstudio) {
+        return this.planEstudioService.guardarPlanEstudio(planEstudio);
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> eliminarUsuario(@PathVariable Long id) {
-        recordatorioService.eliminarUsuario(id);
+    public ResponseEntity<Void> eliminarPlanEstudio(@PathVariable Long id) {
+        planEstudioService.eliminarPlanEstudio(id);
         return ResponseEntity.noContent().build();
     }
 }

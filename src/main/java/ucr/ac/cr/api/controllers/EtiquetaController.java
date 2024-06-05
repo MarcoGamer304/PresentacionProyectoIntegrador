@@ -15,38 +15,38 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import ucr.ac.cr.api.models.UsuarioModel;
-import ucr.ac.cr.api.services.UsuarioService;
+import ucr.ac.cr.api.models.EtiquetaModel;
+import ucr.ac.cr.api.services.EtiquetaService;
 
 /**
  *
  * @author Marco
  */
 @RestController
-@RequestMapping("/usuario")
-public class UsuarioController {
+@RequestMapping("/etiqueta")
+public class EtiquetaController {
 
     @Autowired
-    UsuarioService recordatorioService;
+    EtiquetaService etiquetaService;
 
-    @GetMapping("/allUsuario")
-    public ArrayList<UsuarioModel> obtenerUsuario() {
-        return recordatorioService.obtenerUsuario();
+    @GetMapping("/allEtiqueta")
+    public ArrayList<EtiquetaModel> obtenerEtiqueta() {
+        return etiquetaService.obtenerEtiqueta();
     }
 
     @PostMapping()
-    public UsuarioModel guardarUsuario(@RequestBody UsuarioModel usuario) {
-        return this.recordatorioService.guardarUsuario(usuario);
+    public EtiquetaModel guardarEtiqueta(@RequestBody EtiquetaModel etiqueta) {
+        return this.etiquetaService.guardarEtiqueta(etiqueta);
     }
 
     @PatchMapping()
-    public UsuarioModel modificarUsuario(@RequestBody UsuarioModel usuario) {
-        return this.recordatorioService.guardarUsuario(usuario);
+    public EtiquetaModel modificarEtiqueta(@RequestBody EtiquetaModel etiqueta) {
+        return this.etiquetaService.guardarEtiqueta(etiqueta);
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> eliminarUsuario(@PathVariable Long id) {
-        recordatorioService.eliminarUsuario(id);
+    public ResponseEntity<Void> eliminarEtiqueta(@PathVariable Long id) {
+        etiquetaService.eliminarEtiqueta(id);
         return ResponseEntity.noContent().build();
     }
 }

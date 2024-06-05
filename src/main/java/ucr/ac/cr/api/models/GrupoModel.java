@@ -4,8 +4,15 @@
  */
 package ucr.ac.cr.api.models;
 
-import jakarta.persistence.*;
-import lombok.*;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 /**
  *
@@ -16,32 +23,29 @@ import lombok.*;
 @NoArgsConstructor
 
 @Entity
-@Table(name = "usuario")
-public class UsuarioModel {
+@Table(name = "grupo")
+public class GrupoModel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(unique = true, nullable = false)
     private Long id;
 
-    @Column(unique = true, nullable = false)
-    private String user;
+    @Column(nullable = false)
+    private String cupo;
 
     @Column(nullable = false)
-    private String apellidos;
+    private String estado;
 
     @Column(nullable = false)
-    private String correo_electronico;
+    private String horario_entrada;
 
     @Column(nullable = false)
-    private String nombre_usuario;
+    private String horario_salida;
 
     @Column(nullable = false)
-    private String password;
+    private String fecha_creacion;
 
     @Column(nullable = false)
-    private String telefono;
-
-    @Column(nullable = false)
-    private String carne;
+    private String dias;
 }

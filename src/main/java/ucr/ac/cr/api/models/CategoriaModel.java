@@ -4,8 +4,15 @@
  */
 package ucr.ac.cr.api.models;
 
-import jakarta.persistence.*;
-import lombok.*;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 /**
  *
@@ -16,32 +23,17 @@ import lombok.*;
 @NoArgsConstructor
 
 @Entity
-@Table(name = "usuario")
-public class UsuarioModel {
+@Table(name = "categoria")
+public class CategoriaModel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(unique = true, nullable = false)
     private Long id;
 
-    @Column(unique = true, nullable = false)
-    private String user;
+    @Column(nullable = false)
+    private String descripcion;
 
     @Column(nullable = false)
-    private String apellidos;
-
-    @Column(nullable = false)
-    private String correo_electronico;
-
-    @Column(nullable = false)
-    private String nombre_usuario;
-
-    @Column(nullable = false)
-    private String password;
-
-    @Column(nullable = false)
-    private String telefono;
-
-    @Column(nullable = false)
-    private String carne;
+    private String nombre;
 }

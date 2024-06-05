@@ -15,38 +15,38 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import ucr.ac.cr.api.models.UsuarioModel;
-import ucr.ac.cr.api.services.UsuarioService;
+import ucr.ac.cr.api.models.CicloModel;
+import ucr.ac.cr.api.services.CicloService;
 
 /**
  *
  * @author Marco
  */
 @RestController
-@RequestMapping("/usuario")
-public class UsuarioController {
+@RequestMapping("/ciclo")
+public class CicloController {
 
     @Autowired
-    UsuarioService recordatorioService;
+    CicloService cicloService;
 
-    @GetMapping("/allUsuario")
-    public ArrayList<UsuarioModel> obtenerUsuario() {
-        return recordatorioService.obtenerUsuario();
+    @GetMapping("/allCiclo")
+    public ArrayList<CicloModel> obtenerCiclo() {
+        return cicloService.obtenerCiclo();
     }
 
     @PostMapping()
-    public UsuarioModel guardarUsuario(@RequestBody UsuarioModel usuario) {
-        return this.recordatorioService.guardarUsuario(usuario);
+    public CicloModel guardarCiclo(@RequestBody CicloModel ciclo) {
+        return this.cicloService.guardarCiclo(ciclo);
     }
 
     @PatchMapping()
-    public UsuarioModel modificarUsuario(@RequestBody UsuarioModel usuario) {
-        return this.recordatorioService.guardarUsuario(usuario);
+    public CicloModel modificarCiclo(@RequestBody CicloModel ciclo) {
+        return this.cicloService.guardarCiclo(ciclo);
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> eliminarUsuario(@PathVariable Long id) {
-        recordatorioService.eliminarUsuario(id);
+    public ResponseEntity<Void> eliminarCiclo(@PathVariable Long id) {
+        cicloService.eliminarCiclo(id);
         return ResponseEntity.noContent().build();
     }
 }

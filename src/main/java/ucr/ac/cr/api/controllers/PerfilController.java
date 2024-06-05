@@ -15,38 +15,38 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import ucr.ac.cr.api.models.UsuarioModel;
-import ucr.ac.cr.api.services.UsuarioService;
+import ucr.ac.cr.api.models.PerfilModel;
+import ucr.ac.cr.api.services.PerfilService;
 
 /**
  *
  * @author Marco
  */
 @RestController
-@RequestMapping("/usuario")
-public class UsuarioController {
+@RequestMapping("/perfil")
+public class PerfilController {
 
     @Autowired
-    UsuarioService recordatorioService;
+    PerfilService perfilService;
 
-    @GetMapping("/allUsuario")
-    public ArrayList<UsuarioModel> obtenerUsuario() {
-        return recordatorioService.obtenerUsuario();
+    @GetMapping("/allPerfil")
+    public ArrayList<PerfilModel> obtenerPerfil() {
+        return perfilService.obtenerPerfil();
     }
 
     @PostMapping()
-    public UsuarioModel guardarUsuario(@RequestBody UsuarioModel usuario) {
-        return this.recordatorioService.guardarUsuario(usuario);
+    public PerfilModel guardarPerfil(@RequestBody PerfilModel perfil) {
+        return this.perfilService.guardarPerfil(perfil);
     }
 
     @PatchMapping()
-    public UsuarioModel modificarUsuario(@RequestBody UsuarioModel usuario) {
-        return this.recordatorioService.guardarUsuario(usuario);
+    public PerfilModel modificarPerfil(@RequestBody PerfilModel perfil) {
+        return this.perfilService.guardarPerfil(perfil);
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> eliminarUsuario(@PathVariable Long id) {
-        recordatorioService.eliminarUsuario(id);
+    public ResponseEntity<Void> eliminarPerfil(@PathVariable Long id) {
+        perfilService.eliminarPerfil(id);
         return ResponseEntity.noContent().build();
     }
 }

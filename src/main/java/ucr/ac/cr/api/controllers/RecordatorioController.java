@@ -15,38 +15,38 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import ucr.ac.cr.api.models.UsuarioModel;
-import ucr.ac.cr.api.services.UsuarioService;
+import ucr.ac.cr.api.models.RecordatorioModel;
+import ucr.ac.cr.api.services.RecordatorioService;
 
 /**
  *
  * @author Marco
  */
 @RestController
-@RequestMapping("/usuario")
-public class UsuarioController {
+@RequestMapping("/recordatorio")
+public class RecordatorioController {
 
     @Autowired
-    UsuarioService recordatorioService;
+    RecordatorioService recordatorioService;
 
-    @GetMapping("/allUsuario")
-    public ArrayList<UsuarioModel> obtenerUsuario() {
-        return recordatorioService.obtenerUsuario();
+    @GetMapping("/allRecordatorio")
+    public ArrayList<RecordatorioModel> obtenerPerfil() {
+        return recordatorioService.obtenerRecordatorio();
     }
 
     @PostMapping()
-    public UsuarioModel guardarUsuario(@RequestBody UsuarioModel usuario) {
-        return this.recordatorioService.guardarUsuario(usuario);
+    public RecordatorioModel guardarPerfil(@RequestBody RecordatorioModel recordatorio) {
+        return this.recordatorioService.guardarRecordatorio(recordatorio);
     }
 
     @PatchMapping()
-    public UsuarioModel modificarUsuario(@RequestBody UsuarioModel usuario) {
-        return this.recordatorioService.guardarUsuario(usuario);
+    public RecordatorioModel modificarPerfil(@RequestBody RecordatorioModel recordatorio) {
+        return this.recordatorioService.guardarRecordatorio(recordatorio);
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> eliminarUsuario(@PathVariable Long id) {
-        recordatorioService.eliminarUsuario(id);
+    public ResponseEntity<Void> eliminarPerfil(@PathVariable Long id) {
+        recordatorioService.eliminarRecordatorio(id);
         return ResponseEntity.noContent().build();
     }
 }

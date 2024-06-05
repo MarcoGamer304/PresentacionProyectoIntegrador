@@ -15,38 +15,38 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import ucr.ac.cr.api.models.UsuarioModel;
-import ucr.ac.cr.api.services.UsuarioService;
+import ucr.ac.cr.api.models.ActividadModel;
+import ucr.ac.cr.api.services.ActividadService;
 
 /**
  *
  * @author Marco
  */
 @RestController
-@RequestMapping("/usuario")
-public class UsuarioController {
+@RequestMapping("/actividad")
+public class ActividadController {
 
     @Autowired
-    UsuarioService recordatorioService;
+    ActividadService actividadService;
 
-    @GetMapping("/allUsuario")
-    public ArrayList<UsuarioModel> obtenerUsuario() {
-        return recordatorioService.obtenerUsuario();
+    @GetMapping("/allActividad")
+    public ArrayList<ActividadModel> obtenerUsuarios() {
+        return actividadService.obtenerActividad();
     }
 
     @PostMapping()
-    public UsuarioModel guardarUsuario(@RequestBody UsuarioModel usuario) {
-        return this.recordatorioService.guardarUsuario(usuario);
+    public ActividadModel guardarUsuario(@RequestBody ActividadModel actividad) {
+        return this.actividadService.guardarActividad(actividad);
     }
 
     @PatchMapping()
-    public UsuarioModel modificarUsuario(@RequestBody UsuarioModel usuario) {
-        return this.recordatorioService.guardarUsuario(usuario);
+    public ActividadModel modificarUsuario(@RequestBody ActividadModel actividad) {
+        return this.actividadService.guardarActividad(actividad);
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> eliminarUsuario(@PathVariable Long id) {
-        recordatorioService.eliminarUsuario(id);
+    public ResponseEntity<Void> eliminarRecurso(@PathVariable Long id) {
+        actividadService.eliminarActividad(id);
         return ResponseEntity.noContent().build();
     }
 }

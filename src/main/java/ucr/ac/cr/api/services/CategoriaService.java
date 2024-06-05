@@ -5,39 +5,37 @@
 package ucr.ac.cr.api.services;
 
 import java.util.ArrayList;
-import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import ucr.ac.cr.api.models.LoginModel;
-import ucr.ac.cr.api.repositories.LoginRepository;
+import ucr.ac.cr.api.models.CategoriaModel;
+import ucr.ac.cr.api.repositories.CategoriaRepository;
 
 /**
  *
  * @author Marco
  */
 @Service
-public class LoginService {
+public class CategoriaService {
 
     @Autowired
-    LoginRepository loginRepository;
+    CategoriaRepository categoriaRepository;
 
-    public ArrayList<LoginModel> obtenerUsuarios() {
-        return (ArrayList<LoginModel>) loginRepository.findAll();
+    public ArrayList<CategoriaModel> obtenerCategoria() {
+        return (ArrayList<CategoriaModel>) categoriaRepository.findAll();
     }
 
-    public LoginModel guardarUsuario(LoginModel usuario) {
-        return loginRepository.save(usuario);
+    public CategoriaModel guardarCategoria(CategoriaModel categoria) {
+        return categoriaRepository.save(categoria);
     }
 
     @Transactional
-    public void eliminarUsuario(Long id) {
-        if (loginRepository.existsById(id)) {
-            loginRepository.deleteById(id);
+    public void eliminarCategoria(Long id) {
+        if (categoriaRepository.existsById(id)) {
+            categoriaRepository.deleteById(id);
         } else {
 
             System.out.println("fallo");
         }
     }
-
 }
