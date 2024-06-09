@@ -31,19 +31,19 @@ public class CarreraModel {
     @Column(unique = true, nullable = false)
     private Long id;
 
-    @Column(nullable = false)
-    private String descripcion;
+    @Column(unique = true, nullable = false)
+    private String careerCode;
 
     @Column(nullable = false)
-    private String nombre;
+    private String description;
 
     @Column(nullable = false)
-    private String codigo_carrera;
+    private String workingMarket;
+
+    @Column(unique = true, nullable = false)
+    private String name;
 
     @Column(nullable = false)
-    private String perfil_profecional;
-
-    @Column(nullable = false)
-    private String mercado_laboral;
+    private String professionalProfile;
 
 }
