@@ -31,8 +31,9 @@ public class PerfilModel {
     private Long id;
 
     @Column(nullable = false)
-    private String descripcion;
+    private String description;
 
     @Column(nullable = false)
-    private String tipo_usuario;
+    private String typeUser;
+    
 }

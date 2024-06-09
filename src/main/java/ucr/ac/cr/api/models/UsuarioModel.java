@@ -28,19 +28,19 @@ public class UsuarioModel {
     private String user;
 
     @Column(nullable = false)
-    private String apellidos;
+    private String firstName;
 
     @Column(nullable = false)
-    private String correo_electronico;
+    private String lastName;
 
     @Column(nullable = false)
-    private String nombre_usuario;
+    private String email;
 
     @Column(nullable = false)
     private String password;
 
     @Column(nullable = false)
-    private String telefono;
+    private String phone;
 
     @Column(nullable = false)
     private String carne;

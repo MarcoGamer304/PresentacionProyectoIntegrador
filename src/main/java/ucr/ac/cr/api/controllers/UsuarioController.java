@@ -27,26 +27,26 @@ import ucr.ac.cr.api.services.UsuarioService;
 public class UsuarioController {
 
     @Autowired
-    UsuarioService recordatorioService;
+    UsuarioService usuarioService;
 
     @GetMapping("/allUsuario")
     public ArrayList<UsuarioModel> obtenerUsuario() {
-        return recordatorioService.obtenerUsuario();
+        return usuarioService.obtenerUsuario();
     }
 
     @PostMapping()
     public UsuarioModel guardarUsuario(@RequestBody UsuarioModel usuario) {
-        return this.recordatorioService.guardarUsuario(usuario);
+        return this.usuarioService.guardarUsuario(usuario);
     }
 
     @PatchMapping()
     public UsuarioModel modificarUsuario(@RequestBody UsuarioModel usuario) {
-        return this.recordatorioService.guardarUsuario(usuario);
+        return this.usuarioService.guardarUsuario(usuario);
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> eliminarUsuario(@PathVariable Long id) {
-        recordatorioService.eliminarUsuario(id);
+        usuarioService.eliminarUsuario(id);
         return ResponseEntity.noContent().build();
     }
 }
