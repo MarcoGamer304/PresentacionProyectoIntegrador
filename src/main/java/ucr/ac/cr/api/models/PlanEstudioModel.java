@@ -31,15 +31,18 @@ public class PlanEstudioModel {
     @Column(unique = true, nullable = false)
     private Long id;
 
-    @Column(nullable = false)
-    private String descripcion;
+    @Column(unique = true, nullable = false)
+    private String name;
 
     @Column(nullable = false)
-    private String cantidad_creditos;
+    private String description;
 
     @Column(nullable = false)
-    private String fecha_vigor;
+    private String numberCredits;
 
     @Column(nullable = false)
-    private String fecha_aprovacion;
+    private String effectiveDate;
+
+    @Column(nullable = false)
+    private String approvalDate;
 }

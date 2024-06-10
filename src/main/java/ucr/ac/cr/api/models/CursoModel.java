@@ -32,26 +32,26 @@ public class CursoModel {
     private Long id;
 
     @Column(nullable = false)
-    private String descripcion;
+    private String description;
+
+    @Column(unique = true, nullable = false)
+    private String name;
 
     @Column(nullable = false)
-    private String nombre;
+    private String blockBelonging;
 
     @Column(nullable = false)
-    private String bloque_perteneciente;
+    private String teachingHours;
 
     @Column(nullable = false)
-    private String horas_lectivas;
+    private String modality;
 
     @Column(nullable = false)
-    private String modalidad;
+    private String independentWorkHours;
 
     @Column(nullable = false)
-    private String horas_trabajo_independiente;
+    private String creditQuantity;
 
-    @Column(nullable = false)
-    private String cantidad_creditos;
-
-    @Column(nullable = false)
-    private String sigla;
+    @Column(unique = true, nullable = false)
+    private String initials;
 }
