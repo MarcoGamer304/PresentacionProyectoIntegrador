@@ -25,8 +25,8 @@ public class WebConfig implements WebMvcConfigurer {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
                 registry.addMapping("/**")
-                        .allowedOrigins("file:///C:/Users/Marco/OneDrive/Escritorio/html/PrimerLogin/index.html") // Reemplaza con el origen de tu frontend
-                        .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
+                        .allowedOrigins("file:///C:/Users/Marco/OneDrive/Escritorio/html/PrimerLogin/index.html")
+                        .allowedMethods("GET","GET", "POST", "PUT", "DELETE", "OPTIONS")
                         .allowedHeaders("*")
                         .allowCredentials(true);
             }

@@ -5,10 +5,13 @@
 package ucr.ac.cr.api.services;
 
 import java.util.ArrayList;
+import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import ucr.ac.cr.api.models.PerfilModel;
 import ucr.ac.cr.api.models.UsuarioModel;
+import ucr.ac.cr.api.repositories.PerfilRepository;
 import ucr.ac.cr.api.repositories.UsuarioRepository;
 
 /**
@@ -21,12 +24,25 @@ public class UsuarioService {
     @Autowired
     UsuarioRepository usuarioRepository;
 
+    @Autowired
+    PerfilRepository perfilRepository;
+
     public ArrayList<UsuarioModel> obtenerUsuario() {
         return (ArrayList<UsuarioModel>) usuarioRepository.findAll();
     }
 
-    public UsuarioModel guardarUsuario(UsuarioModel recordatorio) {
-        return usuarioRepository.save(recordatorio);
+    public UsuarioModel obtenerUsuarioId(Long id) {
+        Optional<UsuarioModel> usuario = usuarioRepository.findById(id);
+        return usuario.orElse(null); 
+    }
+
+    public UsuarioModel guardarUsuario(UsuarioModel usuario) {
+        if (usuario.getListaPerfil() != null) {
+            for (PerfilModel perfil : usuario.getListaPerfil()) {
+                perfil.setUsuario(usuario);
+            }
+        }
+        return usuarioRepository.save(usuario);
     }
 
     @Transactional

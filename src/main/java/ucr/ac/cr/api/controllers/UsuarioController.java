@@ -6,6 +6,7 @@ package ucr.ac.cr.api.controllers;
 
 import java.util.ArrayList;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -28,6 +29,16 @@ public class UsuarioController {
 
     @Autowired
     UsuarioService usuarioService;
+
+    @GetMapping("/{id}")
+    public ResponseEntity<UsuarioModel> obtenerUsuarioId(@PathVariable Long id) {
+        UsuarioModel usuario = usuarioService.obtenerUsuarioId(id);
+        if (usuario != null) {
+            return new ResponseEntity<>(usuario, HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
 
     @GetMapping("/allUsuario")
     public ArrayList<UsuarioModel> obtenerUsuario() {

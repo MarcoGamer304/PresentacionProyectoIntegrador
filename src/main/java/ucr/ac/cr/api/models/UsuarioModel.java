@@ -4,7 +4,11 @@
  */
 package ucr.ac.cr.api.models;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
 import lombok.*;
 
 /**
@@ -44,4 +48,8 @@ public class UsuarioModel {
 
     @Column(nullable = false)
     private String carne;
+    
+    @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonManagedReference
+    private List<PerfilModel> listaPerfil;   
 }
