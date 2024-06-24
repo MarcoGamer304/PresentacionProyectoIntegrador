@@ -4,12 +4,18 @@
  */
 package ucr.ac.cr.api.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -54,4 +60,9 @@ public class CursoModel {
 
     @Column(unique = true, nullable = false)
     private String initials;
+    
+    //@JsonIgnore
+    @JsonIgnoreProperties("cursos")
+    @ManyToMany(mappedBy = "cursos")
+    private List<PlanEstudioModel> planesEstudio = new ArrayList<>();
 }

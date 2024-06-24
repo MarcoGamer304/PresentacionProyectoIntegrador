@@ -34,7 +34,6 @@ public class CursoService {
         if (cursoRepository.existsById(id)) {
             cursoRepository.deleteById(id);
         } else {
-
             System.out.println("fallo");
         }
     }
