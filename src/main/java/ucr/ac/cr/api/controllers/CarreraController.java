@@ -6,6 +6,7 @@ package ucr.ac.cr.api.controllers;
 
 import java.util.ArrayList;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -32,6 +33,16 @@ public class CarreraController {
     @GetMapping("/allCarrera")
     public ArrayList<CarreraModel> obtenerCarrera() {
         return carreraService.obtenerCarrera();
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<CarreraModel> obtenerCarreraId(@PathVariable Long id) {
+        CarreraModel carrera = carreraService.obtenerCarreraId(id);
+        if (carrera != null) {
+            return new ResponseEntity<>(carrera, HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
     }
 
     @PostMapping()

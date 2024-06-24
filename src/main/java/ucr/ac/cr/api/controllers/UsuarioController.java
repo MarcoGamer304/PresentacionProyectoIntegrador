@@ -60,4 +60,15 @@ public class UsuarioController {
         usuarioService.eliminarUsuario(id);
         return ResponseEntity.noContent().build();
     }
+
+    @PostMapping("/{usuarioId}/carrera/{carreraId}")
+    public ResponseEntity<UsuarioModel> asignarCarrera(@PathVariable Long usuarioId, @PathVariable Long carreraId) {
+        UsuarioModel usuario = usuarioService.asignarCarrera(usuarioId, carreraId);
+        if (usuario != null) {
+            return new ResponseEntity<>(usuario, HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
 }
+

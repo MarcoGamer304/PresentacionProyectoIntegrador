@@ -5,6 +5,7 @@
 package ucr.ac.cr.api.services;
 
 import java.util.ArrayList;
+import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -19,23 +20,28 @@ import ucr.ac.cr.api.repositories.CarreraRepository;
 public class CarreraService {
 
     @Autowired
-    CarreraRepository CarreraRepository;
+    CarreraRepository carreraRepository;
 
     public ArrayList<CarreraModel> obtenerCarrera() {
-        return (ArrayList<CarreraModel>) CarreraRepository.findAll();
+        return (ArrayList<CarreraModel>) carreraRepository.findAll();
+    }
+
+    public CarreraModel obtenerCarreraId(Long id) {
+        Optional<CarreraModel> carrera = carreraRepository.findById(id);
+        return carrera.orElse(null);
     }
 
     public CarreraModel guardarCarrera(CarreraModel carrera) {
-        return CarreraRepository.save(carrera);
+        return carreraRepository.save(carrera);
     }
 
     @Transactional
     public void eliminarCarrera(Long id) {
-        if (CarreraRepository.existsById(id)) {
-            CarreraRepository.deleteById(id);
+        if (carreraRepository.existsById(id)) {
+            carreraRepository.deleteById(id);
         } else {
-
             System.out.println("fallo");
         }
     }
 }
+
