@@ -5,6 +5,7 @@
 package ucr.ac.cr.api.models;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import java.util.ArrayList;
@@ -50,9 +51,9 @@ public class UsuarioModel {
     @Column(nullable = false)
     private String carne;
     
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "carrera_id")
-    @JsonBackReference
+    @JsonIgnore
     private CarreraModel carrera;
     
     @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL, orphanRemoval = true)
