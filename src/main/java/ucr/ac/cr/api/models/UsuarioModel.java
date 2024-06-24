@@ -53,7 +53,7 @@ public class UsuarioModel {
     
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "carrera_id")
-    @JsonIgnore
+    @JsonManagedReference
     private CarreraModel carrera;
     
     @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL, orphanRemoval = true)
